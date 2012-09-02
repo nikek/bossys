@@ -11,11 +11,11 @@ html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 body { margin: 0; padding:0; font-size: 1em; line-height: 1.4; }
 ::-moz-selection { background: #E37B52; color: #fff; text-shadow: none; }
 ::selection { background: #E37B52; color: #fff; text-shadow: none; }
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:hover { color: #06e; }
-a:focus { outline: thin dotted; }
-a:hover, a:active { outline: 0; }
+li a { color: #00e; }
+li a:visited { color: #551a8b; }
+li a:hover { color: #06e; }
+li a:focus { outline: thin dotted; }
+li a:hover, li a:active { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
 b, strong { font-weight: bold; }
 blockquote { margin: 1em 40px; }
@@ -31,7 +31,7 @@ small { font-size: 85%; }
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
-ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+ul, ol { margin: 0 0 2rem 0; padding: 0 0 0 30px; list-style:none; }
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
@@ -77,30 +77,37 @@ body
 	padding:0 7%;
 }
 
+.stationlist { text-align:center; padding:0 }
 
 h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem;	margin:0 0 0.7rem 0; }
+h2 { font-size: 2.5rem;	margin:0 0 2rem 0; }
 h3 { font-size: 2.0rem; }
 h4 { font-size: 1.5rem; }
 
-a, a:visited {
+li {
+	margin:0 0 1rem 0;
+}
+
+li a,li a:visited {
 	color:#2972A3;
 	text-decoration:none;
 }
 
-a:hover {
+li a:hover {
 	color:#72ADD4;
 	text-decoration:underline;
 }
 
+
 .login {text-align:center;}
-.login div {
-	width:90%;
+fieldset {
+	width:100%;
+	padding:1px;
 	margin:0 auto;
 	margin-bottom:1.1rem;
 	overflow:hidden;
 }
-.login input {
+input, select, textarea {
 	width:100%;
 	height:3.7rem;
 	font-size:1.6rem;
@@ -108,10 +115,11 @@ a:hover {
 	
 	border-radius:3px;
 }
-.login input:not([type='submit']) { border: 1px dashed #3f0c04; }
-.login label {float:right;}
+input:not([type='submit']), select, textarea { border: 1px dashed #3f0c04;  }
+textarea {height:100px;}
+label {float:right;}
 
-.error {color:#B31; border-bottom:1px solid #931; margin:0; padding:0;}
+.error {color:#B31; border-bottom:1px solid #931; margin:0 0 1.5rem 0; padding:0;}
 
 
 footer {
@@ -123,7 +131,12 @@ footer {
 
 
 
-
+.btn-back {
+	width:40px;
+	margin: -3px 10px 0 0;
+	float:left;
+}
+.btn-back ~ h1 { margin-top:0;}
 
 /* Twitter bootstrap btn */
 
@@ -137,6 +150,7 @@ footer {
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
+  text-decoration:none;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;

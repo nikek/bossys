@@ -5,23 +5,23 @@
 
 	{{ Form::open('login') }}
 	
-		<div>
+		<fieldset>
 			{{ Form::text('username') }}<br>
 			{{ Form::label('username', 'Användarnamn') }}
-		</div>
+		</fieldset>
 	
-		<div>
+		<fieldset>
 			{{ Form::password('password') }}<br>
 			{{ Form::label('password', 'Lösenord') }}
-		</div>
+		</fieldset>
 	
 		@if(Session::has('login_errors'))
-			<div class="error">Du failade med anv eller lösen!</div>
+			<fieldset class="error">Du failade med anv eller lösen!</fieldset>
 		@endif
 		
-		<div>
+		<fieldset>
 		{{ Form::submit('Do it!', array('class' => 'btn btn-info')) }}
-		</div>
+		</fieldset>
 	
 	{{ Form::close() }}
 </section>

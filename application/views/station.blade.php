@@ -6,9 +6,9 @@
 
 @section('content')
 <section class="content">
-	<p>{{ HTML::link('/', 'Tillbaka') }}</p>
+	<div>{{ HTML::link('/', '&larr;', array('class' => 'btn btn-back')) }}</div>
 	
-	<h1>{{ $station->name }}</h1>
+	<h2>{{ $station->name }}</h2>
 	
 	<ul>
 		@forelse($rounds as $r)
@@ -18,6 +18,6 @@
 		@endforelse
 	</ul>
 	
-	{{ HTML::link("$station->slug/nyttlag",'Nytt lag') }}
+	{{ HTML::link("$station->slug/nyttlag",'+ Nytt lag', array('class' => 'btn btn-info')) }}
 </section>
 @endsection

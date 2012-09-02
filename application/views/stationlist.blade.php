@@ -6,10 +6,10 @@
 
 @section('content')
 <section class="content">
-	<ul>
+	<ul class="stationlist">
 		@foreach($stations as $st)
 
-			<li>{{ HTML::link("$st->slug", $st->name) }}</li>
+			<li>{{ HTML::link("$st->slug", $st->name, array('class' => 'btn')) }}</li>
 	
 		@endforeach
 	</ul>
