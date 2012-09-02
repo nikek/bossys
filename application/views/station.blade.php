@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<section class="content">
 	<p>{{ HTML::link('/', 'Tillbaka') }}</p>
 	
 	<h1>{{ $station->name }}</h1>
@@ -18,5 +19,5 @@
 	</ul>
 	
 	{{ HTML::link("$station->slug/nyttlag",'Nytt lag') }}
-	
+</section>
 @endsection

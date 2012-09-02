@@ -5,18 +5,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Bossys</title>
 	<meta name="viewport" content="width=device-width">
-	{{ HTML::style('laravel/css/style.css') }}
+	{{ HTML::style('css/style.css') }}
 </head>
 <body>
-	<div id="wrap">
+	<div class="wrap">
 		<header>
-			<h1>BosSys</h1>
-			<h2>Bättre än systemet</h2>
+			{{ HTML::image('img/bosse2012-logotyp.png', 'Bosse Systems', array('id' => 'logo-header')); }}
 		</header>
 		
-		<section>
-			@yield('content')
-		</section>
+		@yield('content')
 		
 		<footer>
 			&copy; 2012 Vraque @yield('authbar')

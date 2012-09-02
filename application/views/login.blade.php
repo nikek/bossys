@@ -1,29 +1,28 @@
 @layout('main')
 
 @section('content')
+<section class="content login">
 
-<h3>Logga in!</h3>
-
-{{ Form::open('login') }}
-
-	@if(Session::has('login_errors'))
-		<span class="error">Du failade på anv eller lösen.</span>
-	@endif
+	{{ Form::open('login') }}
 	
-	<div>
-	{{ Form::label('username', 'Anv.') }}<br>
-	{{ Form::text('username') }}
-	</div>
+		<div>
+			{{ Form::text('username') }}<br>
+			{{ Form::label('username', 'Användarnamn') }}
+		</div>
 	
-	<div>
-	{{ Form::label('password', 'Lösen') }}<br>
-	{{ Form::password('password') }}
-	</div>
+		<div>
+			{{ Form::password('password') }}<br>
+			{{ Form::label('password', 'Lösenord') }}
+		</div>
 	
-	<div>
-	{{ Form::submit('Do it!') }}
-	</div>
+		@if(Session::has('login_errors'))
+			<div class="error">Du failade med anv eller lösen!</div>
+		@endif
+		
+		<div>
+		{{ Form::submit('Do it!', array('class' => 'btn btn-info')) }}
+		</div>
 	
-{{ Form::close() }}
-
+	{{ Form::close() }}
+</section>
 @endsection

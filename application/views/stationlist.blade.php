@@ -5,12 +5,13 @@
 @endsection
 
 @section('content')
+<section class="content">
+	<ul>
+		@foreach($stations as $st)
 
-<ul>
-	@foreach($stations as $st)
-
-		<li>{{ HTML::link("$st->slug", $st->name) }}</li>
+			<li>{{ HTML::link("$st->slug", $st->name) }}</li>
 	
-	@endforeach
-</ul>	
+		@endforeach
+	</ul>
+</section>
 @endsection

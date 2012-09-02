@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+<section class="content">
+	
 	<p>{{ HTML::link("/$station->slug", 'Tillbaka') }}</p>
 	
 	<h1>Nytt lag kör {{ $station->name }}</h1>
@@ -31,5 +33,5 @@
 			{{ Form::submit('Klart!') }}
 		</div>
 	{{ Form::close() }}
-	
+</section>
 @endsection
