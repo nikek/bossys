@@ -22,7 +22,7 @@
 			{{ Form::label('score', "Poäng ($station->unit)") }}
 		</fieldset>
 		<fieldset>
-			{{ Form::number('score') }}<br>
+			{{ Form::number('extra') }}<br>
 			{{ Form::label('extra', 'Extra poäng (Vq)') }}
 		</fieldset>
 		<fieldset>

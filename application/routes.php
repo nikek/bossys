@@ -86,7 +86,7 @@ Route::group(array('before' => 'auth'), function()
 		$teamslist = array();
 		foreach($teams as $team) $teamslist[$team->id] = $team->name;
 
-		return View::make('roundform', array( 'station' => $station, 'teams' => $teamslist ));
+		return View::make('round.new', array( 'station' => $station, 'teams' => $teamslist ));
 	});
 	
 	
@@ -101,7 +101,20 @@ Route::group(array('before' => 'auth'), function()
 	
 	// GET Form for editing a round
 	Route::get('(:any)/(:num)', function($slug, $team_id){
-		echo $slug . "/" . $team_id;
+		
+		$station_id = Station::where('slug', '=', $slug)->only('id');
+		$round = Round::where_team_id_and_station_id($team_id, $station_id)->first();
+		
+		return View::make('round.edit', array('round' => $round, 'station' => $round->station, 'team' => $round->team));
+		
+	});
+	
+	// GET Form for editing a round
+	Route::put('(:any)/(:num)', function($slug, $team_id){
+		$id = Round::where_station_id_and_team_id(Input::get('station_id'), Input::get('team_id'))->only('id');
+		Round::update($id, Input::all());
+		
+		return Redirect::to($slug);
 	});
 	
 	

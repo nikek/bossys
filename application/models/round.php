@@ -2,7 +2,7 @@
 
 class Round extends Eloquent {
 	
-	public $includes = array('team');
+	public $includes = array('team', 'station');
 	
 	public function team()
 	{
