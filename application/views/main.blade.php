@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Bossys</title>
 	<meta name="viewport" content="width=device-width">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/bosse-apple-icon.png" />
 	{{ HTML::style('css/style.css') }}
 </head>
 <body>
