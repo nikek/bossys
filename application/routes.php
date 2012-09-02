@@ -110,8 +110,10 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('(:any)', function($slug){
 		
 		$station = Station::where('slug','=',$slug)->first();
+		if(empty($station))return Response::error('404');
+		
 		$rounds = Round::where('station_id','=',$station->id)->get();
-
+		
 		return View::make('station', array( 'station' => $station, 'rounds' => $rounds ));
 	});
 });
