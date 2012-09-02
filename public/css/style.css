@@ -70,7 +70,7 @@ body
 	padding:0;
 }
 
-#logo-header { width:100%; }
+#logo-header { width:100%; padding-bottom:2%; }
 
 .content {
 	width:100%;
@@ -80,7 +80,7 @@ body
 .stationlist { text-align:center; padding:0 }
 
 h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem;	margin:0 0 2rem 0; }
+h2 { font-size: 2.3rem;	margin:0 0 2rem 0; }
 h3 { font-size: 2.0rem; }
 h4 { font-size: 1.5rem; }
 
@@ -117,7 +117,7 @@ input, select, textarea {
 }
 input:not([type='submit']), select, textarea { border: 1px dashed #3f0c04;  }
 textarea {height:100px;}
-label {float:right;}
+label {float:left;}
 
 .error {color:#B31; border-bottom:1px solid #931; margin:0 0 1.5rem 0; padding:0;}
 
