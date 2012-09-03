@@ -9,42 +9,32 @@
 	<table>
 		<thead>
 			<tr>
-				<th></th>
-				@foreach($teams as $t)
-				<th colspan="2">{{ $t->name }}</th>
+				<th>Vq (extra)</th>
+				@foreach($stations as $s)
+				<th>{{ $s->name }}</th>
 				@endforeach
-			</tr>
-			<tr>
-				<th></th>
-				@foreach($teams as $t)
-				<th>Vq</th><th>extra</th>
-				@endforeach
+				<th>Sum</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($stations as $s)
+			@foreach($teams as $t)
 				<tr>
-					<th>{{ $s->name }}</th>
-					@foreach($teams as $t)
+					<th>{{ $t->name }}</th>
+					@foreach($stations as $s)
 						<?php $tmp = 0; ?>
 						@foreach($rounds as $r)
 							@if($r->team->id == $t->id && $r->station->id == $s->id)
-								<td>{{$r->score}}</td><td>{{ $r->extra }}</td>
+								<td>{{$r->score}}@if(!empty($r->extra))({{ $r->extra }})@endif</td>
 								<?php $tmp = 1; $t->sum += $r->score+$r->extra;?>
 							@endif
 						@endforeach
 						@if($tmp == 0)
-							<td></td><td></td>
+							<td></td>
 						@endif
 					@endforeach
+					<td>{{$t->sum}}</td>
 				</tr>
 			@endforeach
-			<tr>
-				<th>Sum:</th>
-				@foreach($teams as $t)
-					<td colspan="2">{{$t->sum}}</td>
-				@endforeach
-			</tr>
 		</tbody>
 	</table>
 </section>

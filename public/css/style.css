@@ -123,8 +123,8 @@ label {float:left;}
 
 
 td { text-align:center;}
-tbody tr:nth-child(odd) { background-color: #Cfaca4;}
-tbody tr:not(:last-child) td:nth-child(odd):nth-child(2n) { background-color: gray;}
+tbody tr:nth-child(odd) { background-color: #efdfd9;}
+th:not(:last-child), td:not(:last-child) { padding:3px; border-right: 1px solid #af8c84;}
 
 footer {
 	margin-top:1.8rem;
