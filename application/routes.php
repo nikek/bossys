@@ -75,7 +75,18 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('stationlist', array( 'stations' => Station::all() ));
 	});
 	
-	
+	Route::get('all', function(){
+		$data = array(
+			'teams' => Team::all(),
+			'stations' => Station::all(),
+			'rounds' => Round::all(),
+		);
+		
+		foreach($data['teams'] as $t){
+			$t->sum=0;
+		}
+		return View::make('all', $data);
+	});
 	
 	// GET Form for adding new team to a station
 	Route::get('(:any)/nyttlag', function($slug){
