@@ -18,6 +18,10 @@
 		@endforelse
 	</ul>
 	
-	{{ HTML::link("$station->slug/nyttlag",'+ Nytt lag', array('class' => 'btn btn-info')) }}
+	@if(!empty($teamslist))
+		{{ HTML::link("$station->slug/nyttlag",'+ Nytt lag', array('class' => 'btn btn-info')) }}
+	@else
+		<div>Alla lag har kört den här stationen, klicka på lagnamnet för att redigera.</div>
+	@endif
 </section>
 @endsection

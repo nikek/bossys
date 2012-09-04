@@ -122,6 +122,10 @@ label {float:left;}
 .error {color:#B31; border-bottom:1px solid #931; margin:0 0 1.5rem 0; padding:0;}
 
 
+td { text-align:center;}
+tbody tr:nth-child(odd) { background-color: #efdfd9;}
+th:not(:last-child), td:not(:last-child) { padding:3px; border-right: 1px solid #af8c84;}
+
 footer {
 	margin-top:1.8rem;
 	font-size:1.4rem;

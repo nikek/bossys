@@ -75,16 +75,36 @@ Route::group(array('before' => 'auth'), function()
 		return View::make('stationlist', array( 'stations' => Station::all() ));
 	});
 	
-	
+	Route::get('all', function(){
+		$data = array(
+			'teams' => Team::all(),
+			'stations' => Station::all(),
+			'rounds' => Round::all(),
+		);
+		
+		foreach($data['teams'] as $t){
+			$t->sum=0;
+		}
+		return View::make('all', $data);
+	});
 	
 	// GET Form for adding new team to a station
 	Route::get('(:any)/nyttlag', function($slug){
 		
 		$station = Station::where('slug','=',$slug)->first();
 		$teams = Team::all();
-		
+		$stationRounds = Round::where('station_id','=',$station->id)->get();
+		$teamsAdded = array();
 		$teamslist = array();
-		foreach($teams as $team) $teamslist[$team->id] = $team->name;
+		
+		foreach($stationRounds as $sr){
+			$teamsAdded[] = $sr->team->id;
+		}
+		foreach($teams as $team){
+			if(!in_array($team->id, $teamsAdded)) $teamslist[$team->id] = $team->name;
+		}
+		
+		if(empty($teamslist)) return Redirect::to($slug);
 
 		return View::make('round.new', array( 'station' => $station, 'teams' => $teamslist ));
 	});
@@ -124,10 +144,22 @@ Route::group(array('before' => 'auth'), function()
 		
 		$station = Station::where('slug','=',$slug)->first();
 		if(empty($station))return Response::error('404');
+
+		$teams = Team::all();
+		$stationRounds = Round::where('station_id','=',$station->id)->get();
+		$teamsAdded = array();
+		$teamslist = array();
+		
+		foreach($stationRounds as $sr){
+			$teamsAdded[] = $sr->team->id;
+		}
+		foreach($teams as $team){
+			if(!in_array($team->id, $teamsAdded)) $teamslist[$team->id] = $team->name;
+		}
 		
 		$rounds = Round::where('station_id','=',$station->id)->get();
 		
-		return View::make('station', array( 'station' => $station, 'rounds' => $rounds ));
+		return View::make('station', array( 'station' => $station, 'rounds' => $rounds, 'teamslist' => $teamslist ));
 	});
 });
 
